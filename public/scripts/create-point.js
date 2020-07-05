@@ -1,4 +1,3 @@
-
 function populateUFs() {
     const ufSelect = document.querySelector('select[name=uf]');
 
@@ -16,16 +15,13 @@ function populateUFs() {
                 //colocando os estados no select em cada option
                 ufSelect.innerHTML += `<option value="${state.id}">${state.nome}</option>`;
             }
-
         })
-
 }
 populateUFs();
 
 function getCities(event) {
     const citySelect = document.querySelector('select[name=city]');
     const stateInput = document.querySelector('input[name=state]');
-
 
     const ufValue = event.target.value;
 
@@ -34,10 +30,10 @@ function getCities(event) {
 
     const url = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${ufValue}/municipios`;
 
-    citySelect.innerHTML = '<option value>Selecione a cidade</option>'
+    citySelect.innerHTML = '<option value>Selecione a cidade</option>';
     citySelect.disabled = true;
 
-    fetch(url)
+    fetch(url);
 
         //Quando voltar da busca
         .then(res => res.json())
@@ -54,7 +50,6 @@ function getCities(event) {
             citySelect.disabled = false;
 
         })
-
 }
 document
     .querySelector('select[name=uf]')
@@ -89,7 +84,6 @@ function handleSelectedItem(event) {
         return itemFound;
     })
 
-
     //se sim: tira-los do vetor
     if (arealdySelected >= 0) {
         // tirar da seleção
@@ -101,7 +95,7 @@ function handleSelectedItem(event) {
             return itemsIsDifferent;
         })
 
-        selectedItems = filteredItems
+        selectedItems = filteredItems;
 
     } else {
         //se não tiver selecionado, adicionar à seleção
@@ -109,10 +103,8 @@ function handleSelectedItem(event) {
         selectedItems.push(itemId);
     }
 
-    console.log(selectedItems)
-
+    console.log(selectedItems);
 
     //atualizar o campo escondido com os itens selecionados
     collectedItems.value = selectedItems;
-
 }
