@@ -110,5 +110,3 @@ server.get('/search', (req, res) => {
 server.listen(porta, function () {
     console.log(`server on in ${porta}`);
 })
-
-/*npm start executa o objeto start no package.json*/
