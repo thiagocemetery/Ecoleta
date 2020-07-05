@@ -7,7 +7,7 @@ const porta = 3000;
 server.use(express.static('public'));
 
 //gabilitar o uso do req.body
-server.use(express.urlencoded({extended:true}))
+server.use(express.urlencoded({extended:true}));
 
 //banco de dados
 const db = require('./database/db.js');
@@ -20,7 +20,6 @@ nunjucks.configure('src/view', {
 
 })
 
-
 //home
 server.get('/', (req, res) => {
     return res.render('index.html');
@@ -30,7 +29,6 @@ server.get('/create-point', (req, res) => {
 
     //req.query: query strings da url
     console.log(req.query);
-
 
     return res.render('create-point.html');
 })
@@ -75,23 +73,22 @@ server.post('/savepoint', (req, res) =>{
     db.run(query, values, afterInsertData);
     
     console.log(req.body);
-
-    
+  
 })
 //resultados da busca
 server.get('/search', (req, res) => {
 
-    const search = req.query.search
+    const search = req.query.search;
 
-    if(search == ''){
+    if(search == '') {
         //vazio
         return res.render('search-results.html', {total: 0});
 
     }
 
     //pegar os dados do db
-    db.all(`SELECT * FROM  places WHERE city LIKE '%${search}%';`, function(err, rows){
-        if(err){
+    db.all(`SELECT * FROM  places WHERE city LIKE '%${search}%';`, function(err, rows) {
+        if(err) {
             return console.log(err);
         }
 
@@ -102,8 +99,6 @@ server.get('/search', (req, res) => {
         //mostrar pagina html com os dados do db
         return res.render('search-results.html', { places : rows, total});
     })
-
-    
 })
 
 //abrindo server
