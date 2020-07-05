@@ -7,7 +7,7 @@ const db = new sqlite3.Database('./src/database/database.db');
 module.exports = db;
 
 //usando obj do db para operações
-db.serialize(()=>{
+db.serialize(()=> {
   /*
     //criar tabela
     db.run(`
@@ -21,7 +21,6 @@ db.serialize(()=>{
             city TEXT,
             items TEXT
         );
-
     `);
 
 
@@ -49,7 +48,7 @@ db.serialize(()=>{
 
     ];
     function afterInsertData(err) {
-        if(err){
+        if(err) {
             return console.log(err);
         }
 
@@ -60,26 +59,24 @@ db.serialize(()=>{
     db.run(query, values, afterInsertData);
 
     //consultar dados da tabela
-    db.all(`SELECT * FROM  places;`, function(err, rows){
-        if(err){
+    db.all(`SELECT * FROM  places;`, function(err, rows) {
+        if(err) {
             return console.log(err);
         }
         console.log('Aqui estão seus registros');
         console.log(rows);
     })
-
-  */
-
-  /*
+    
     //deletar dado da tabela
     //deletar da tabela onde o id =1
-    function deleteItem(id){
-        db.run(`DELETE FROM places WHERE id = ?`, [id], function(err){
+    function deleteItem(id) {
+        db.run(`DELETE FROM places WHERE id = ?`, [id], function(err) {
             if(err){
                 return console.log(err);
             }
             console.log('Registros deletados com sucesso');
         })
     }
-    deleteItem(5);*/
+    deleteItem(5);
+    */
 });
